@@ -2,9 +2,9 @@ from pydantic import BaseModel
 
 
 class InformazioniBase(BaseModel):
-    regioni: str
+    regione: str
     anno: int | None = None
-    partenze: int | None = None
+    presenze: int | None = None
     arrivi: int | None = None
 
 
@@ -14,16 +14,17 @@ class InformazioniCreate(InformazioniBase):
 
 class Informazioni(InformazioniBase):
     id: int
-    struttura_id: int
+    owner_id: int
 
     class Config:
         orm_mode = True
 
 
 class StrutturaBase(BaseModel):
-    nome: str
+    name: str
 
-
+class StrutturaCreate(StrutturaBase):
+    pass
 
 class Struttura(StrutturaBase):
     id: int
